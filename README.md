@@ -1,2 +1,5 @@
-# Small scripts to show the current development environment
+# Tiny scripts to print the current development environment.
+## Just for my personal convenience.
+
+Feedback and contributions are welcome. :-)
 
