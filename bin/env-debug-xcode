@@ -6,6 +6,8 @@ echo
 echo "Xcode selected:" `xcode-select -p`
 xcodebuild -version
 echo
+echo CocoaPods `pod --version`
+echo
 
 echo "Available SDKs:"
 xcodebuild -showsdks
