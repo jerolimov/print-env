@@ -1,0 +1,18 @@
+#!/bin/bash
+
+echo
+if [ -x /usr/libexec/java_home ]; then
+	/usr/libexec/java_home --verbose
+	echo
+fi
+
+for cmd in java ant mvn; do
+	if which=$(which $cmd); then
+		echo "$which:"
+		$cmd -version
+	else
+		echo $cmd not found
+	fi
+	echo
+done
+
