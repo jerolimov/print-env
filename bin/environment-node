@@ -1,0 +1,41 @@
+#!/bin/bash
+
+echo
+for cmd in node npm bower grunt yo forever; do
+	if which=$(which $cmd); then
+		echo $cmd `$cmd --version` "($which)"
+	else
+		echo $cmd not found
+	fi
+done
+echo
+
+if [ -f package.json ]; then
+	echo npm installed global:
+	if [ "$1" = "-d" -o "$1" = "--details" ]; then
+		npm -g list
+	else
+		npm -g list | grep -v '^[│ ]'
+	fi
+	echo
+fi
+
+if [ -f package.json ]; then
+	echo npm installed local:
+	if [ "$1" = "-d" -o "$1" = "--details" ]; then
+		npm list
+	else
+		npm list | grep -v '^[│ ]'
+	fi
+	echo
+fi
+if [ -f bower.json ]; then
+	echo bower installed local:
+	if [ "$1" = "-d" -o "$1" = "--details" ]; then
+		bower list --offline
+	else
+		bower list --offline | grep -v '^[│ ]'
+	fi
+	echo
+fi
+

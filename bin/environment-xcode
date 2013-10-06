@@ -1,0 +1,29 @@
+#!/bin/bash
+
+set -e
+
+echo
+echo "Xcode selected:" `xcode-select -p`
+xcodebuild -version
+echo
+
+echo "Available SDKs:"
+xcodebuild -showsdks
+echo
+
+if [ "$1" = "-d" -o "$1" = "--details" ]; then
+	echo "Details:"
+	xcodebuild -version -sdk
+	echo
+fi
+
+for workspace in *.xcworkspace; do
+	xcodebuild -list -workspace "$workspace"
+	echo
+done
+
+for project in *.xcodeproj; do
+	xcodebuild -list -project "$project"
+	echo
+done
+
